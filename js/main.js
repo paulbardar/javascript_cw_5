@@ -411,10 +411,36 @@ console.log(store.hasProduct("tablet"));
 console.log(store.getInStock().map((p) => p.name));
 console.log(store.isEverythingInStock());
 
+// map
 console.log(store.getNames());
 console.log(store.getPriceList());
 
+// reduce
 console.log(store.getTotalValue());
 console.log(store.getCheapest().name);
 
 console.log(store.sortByPrice().map((p) => p.name));
+console.log(store.sortByPrice("desc").map((p) => p.name));
+
+console.log(store.getNames());
+
+// map з новими об'єктами
+console.log(store.getDiscountedPrices(10));
+
+// Захист внутрішнього масиву
+const all = store.getAll();
+all.push("waste");
+all.length = 0;
+console.log(store.count);
+
+// splice / findIndex
+console.log(store.removeByName("smartfon"));
+console.log(store.removeByName("smartfon"));
+console.log(store.getNames());
+console.log(store.isEverythingInStock());
+
+// порожній магазин
+const empty = new Store();
+console.log(empty.getCheapest()); // null
+console.log(empty.getTotalValue()); // 0
+console.log(empty.isEverythingInStock()); // true (!) — так працює every
